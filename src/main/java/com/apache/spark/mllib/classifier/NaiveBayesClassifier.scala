@@ -38,7 +38,7 @@ object NaiveBayesClassifier {
       if (nbModel.predict(point.features) == point.label) 1 else 0
     }.sum
     val nbAccuracy = nbTotalCorrect / numData
-    println(nbAccuracy)  //正确率0.5803921568627451
+//    println(nbAccuracy)  //正确率0.5803921568627451
 
     val nbMetrics = Seq(nbModel).map { model =>
       val scoreAndLabels = nbData.map{ point =>
