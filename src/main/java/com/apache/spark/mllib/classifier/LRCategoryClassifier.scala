@@ -18,13 +18,13 @@ object LRCategoryClassifier {
     val sc = new SparkContext(conf)
 
     val rowData = sc.textFile(args(0))
-    val recoeds = rowData.map(line => line.split("\t"))
+    val records = rowData.map(line => line.split("\t"))
 
     //1-of-k 编码
-    val categories = recoeds.map( r => r(3)).distinct.collect.zipWithIndex.toMap
+    val categories = records.map( r => r(3)).distinct.collect.zipWithIndex.toMap
     val numCategories = categories.size
 
-    val dataCategories = recoeds.map { r =>
+    val dataCategories = records.map { r =>
       val trimmed = r.map(_.replaceAll("\"", ""))
       val label = trimmed(r.size - 1).toInt
       val categoryIdx = categories(r(3))
