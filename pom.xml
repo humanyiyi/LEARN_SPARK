@@ -126,5 +126,11 @@
             <artifactId>jblas</artifactId>
             <version>1.2.4</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-assembly_2.10</artifactId>
+            <version>1.6.0-cdh5.9.0</version>
+        </dependency>
+
     </dependencies>
 </project>

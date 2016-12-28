@@ -30,10 +30,12 @@ object DTRegression {
       val features = record.slice(2, 14).map(_.toDouble)
       val label = record(record.size - 1).toDouble
       LabeledPoint(label, Vectors.dense(features))
-    }
+    }.randomSplit(Array(0.7,0.3),11L)
+    val trainData = data(0)
+    val testData = data(1)
     val categoricalFeaturesInfo = Map[Int, Int]()
-    val tree_model = DecisionTree.trainRegressor(data,categoricalFeaturesInfo,"variance",5,23)
-    val true_vs_predicted = data.map(p => (p.label, tree_model.predict(p.features)))
+    val tree_model = DecisionTree.trainRegressor(trainData,categoricalFeaturesInfo,"variance",5,23)
+    val true_vs_predicted = testData.map(p => (p.label, tree_model.predict(p.features)))
     println( true_vs_predicted.take(5).toVector.toString())
 
     val MSE = true_vs_predicted.map(value =>

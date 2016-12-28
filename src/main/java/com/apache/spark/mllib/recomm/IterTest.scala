@@ -1,4 +1,4 @@
-//物品推荐
+
 
 package com.apache.spark.mllib.recomm
 
@@ -9,6 +9,7 @@ import org.jblas.DoubleMatrix
 /**
   * Created by root on 2016/12/16.
   */
+//物品推荐
 object IterTest {
 //  val aMatrix = new DoubleMatrix(Array(1.0, 2.0, 3.0))
 

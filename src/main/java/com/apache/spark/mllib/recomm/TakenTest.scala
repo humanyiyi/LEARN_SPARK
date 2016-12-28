@@ -39,8 +39,6 @@ object TakenTest {
 
     topKRacs.map(rating => (titles(rating.product),rating.rating)).foreach(println)  //给该用户推荐的10部电影名称和评分
 
-
-
   }
 
 }
