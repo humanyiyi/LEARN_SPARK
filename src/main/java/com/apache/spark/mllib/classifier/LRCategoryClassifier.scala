@@ -1,6 +1,5 @@
 package com.apache.spark.mllib.classifier
 
-import breeze.optimize.proximal.LogisticGenerator
 import org.apache.spark.mllib.classification.LogisticRegressionWithSGD
 import org.apache.spark.mllib.evaluation.BinaryClassificationMetrics
 import org.apache.spark.mllib.feature.StandardScaler
