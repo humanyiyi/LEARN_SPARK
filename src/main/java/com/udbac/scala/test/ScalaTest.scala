@@ -40,8 +40,8 @@ object ScalaTest {
     var idfModel = idf.fit(featurizedData)
     var rescaledData = idfModel.transform(featurizedData)
     rescaledData.select($"category",$"words",$"features").take(2).foreach(println)
-
-    var trainDataRdd = rescaledData.select($"category",$"features").map {
+    val test = rescaledData.select($"category",$"features")
+    val trainDataRdd = test.map {
       case Row(label: String, features: Vector) =>
         LabeledPoint(label.toDouble, Vectors.dense(features.toArray))
     }
