@@ -16,7 +16,8 @@ object WordCount {
        .setMaster("local").setAppName("aaa")
     val sc = new SparkContext(conf)
     val line = sc.textFile(args(0))
-    line.flatMap(_.split(" ")).map((_,1)).reduceByKey(_+_).collect().foreach(println)
+    val res = line.flatMap(_.split(" ")).map((_,1)).reduceByKey(_+_)
+    res.saveAsTextFile(args(1))
 
     sc.stop()
 
