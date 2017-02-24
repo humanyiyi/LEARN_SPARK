@@ -21,13 +21,13 @@ object AslogTrackMapper {
 
     val data = sc.textFile("D:\\UDBAC\\LEARN_SPARK\\data\\As.log")
 
-    data.map { line => log(line)
-    }.saveAsTextFile("D:\\UDBAC\\LEARN_SPARK\\data\\output1")
+    data.map { line => log(line)}.foreach(println)
+//      .saveAsTextFile("D:\\UDBAC\\LEARN_SPARK\\data\\output1")
   }
 
-  def log(line: String): StringBuilder ={
+  def log(line: String): String ={
     val ua_hash = new HashMap[String, String]()
-    var res = new StringBuilder
+    var res = new String
     val token = line.split("\t")
     var uaid: String = null
     var daytime: String = null
@@ -70,13 +70,10 @@ object AslogTrackMapper {
     }
     var flag = true
     for (ve: String <- vec if flag) {
-      println(ve)
-      println(queryMap.get(ve) != null)
-      if (queryMap.get(ve) != null) {
-        println(queryMap.get(ve))
+      if (!queryMap.get(ve).isEmpty) {
+//        println(queryMap.get(ve))
         val op = queryMap.get(ve)
-        wxid = op match {case Some(o) => o
-        case None => null}
+        wxid = op match {case Some(o) => o}
         flag = false
       }
     }

@@ -1,6 +1,5 @@
 package com.udbac.ua.spark.mr
 
-import org.apache.hadoop.io.NullWritable
 import org.apache.spark.{SparkConf, SparkContext}
 
 import scala.collection.mutable.HashSet
@@ -25,7 +24,7 @@ object AslogUnique {
 
   def log(line: String): String ={
     val uaSet = new HashSet[String]()
-    var res: String = new String
+    var res = new String
     val tokens = line.split("\t")
     if (tokens.length == 12) {
       val uaString = tokens(8)
